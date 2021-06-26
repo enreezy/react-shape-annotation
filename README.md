@@ -7,6 +7,8 @@ Online tool that can annotate objects in videos to get the coordinates and use i
 npm install
 npm run dev
 ```
+you can now open ``` http://localhost:8080/ ``` to your browser
+
 # Video Annotation
 
 ![](https://media.giphy.com/media/Nlo1NSpzUiIVHRRirc/giphy.gif)
