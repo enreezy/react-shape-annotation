@@ -2,13 +2,19 @@
 
 Online annotation tool that can annotate objects in videos and images to get the height and width of the object use it for computer vision datas
 
-## How to run
+## Installation
+--------------------
+Install Package dependencies
 
 ```
 npm install
-npm run dev
 ```
 
+## Running the app
+--------------------
+```
+npm run dev
+```
 you can now open <http://localhost:8080/> to your browser
 
 # Video Annotation
@@ -24,7 +30,7 @@ you can now open <http://localhost:8080/> to your browser
 
 ## Rectangle
 
-![](https://media.giphy.com/media/ZnDgcLMXR74UNxHGYg/giphy.gif)
+<img src="https://media.giphy.com/media/ZnDgcLMXR74UNxHGYg/giphy.gif" width="100%" height="100%"/>
 
 ## How to use
 
@@ -32,7 +38,7 @@ you can now open <http://localhost:8080/> to your browser
 
 ## Polygon
 
-![](https://media.giphy.com/media/w0459JPvugY0mjqTYP/giphy.gif)
+<img src="https://media.giphy.com/media/w0459JPvugY0mjqTYP/giphy.gif" width="100%" height="100%"/>
 
 ## How to use
 
@@ -40,7 +46,7 @@ you can now open <http://localhost:8080/> to your browser
 
 ## Polyline
 
-![](https://media.giphy.com/media/MuaTV3VYNXJe3F7dd2/giphy.gif)
+<img src="https://media.giphy.com/media/MuaTV3VYNXJe3F7dd2/giphy.gif" width="100%" height="100%"/>
 
 ## How to use
 
