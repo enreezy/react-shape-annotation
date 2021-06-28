@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import VideoAnnotation from "annotations/VideoAnnotation";
 import { BrowserRouter as Router } from "react-router-dom";
+import Car from "../assets/videos/car.mp4";
 import {
   Row,
   Col,
@@ -101,7 +102,7 @@ class App extends React.Component {
                       <p className="card-category">ADD NEW BOX is equivalent to 1 box</p>
                     </div>
                     <div className="card-body" style={{marginTop: "15px"}}>
-                      <VideoAnnotation onPlay={this.showData} />
+                      <VideoAnnotation onPlay={this.showData} src={Car}/>
                     </div>
                   </div>
                 </div>

@@ -16,7 +16,6 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
-import Car from "../assets/images/cars.jpg";
 import Polygon from "annotations/Polygon";
 import Rectangle from "annotations/Rectangle";
 import AnnotationInput from "annotations/AnnotationInput";
@@ -82,8 +81,6 @@ export default class ImageAnnotation extends React.Component {
         this.setState({
             dimensions: { height: img.naturalHeight, width: img.naturalWidth },
         });
-
-        console.log(dimensions, "---dimensions")
     };
 
     addNewPolygon = () => {
@@ -199,6 +196,12 @@ export default class ImageAnnotation extends React.Component {
   
       const currentIndex = this.state.polygons.length;
       this.setState({ showInput: false, currentIndex });
+
+      if (this.props.onPlay) {
+        const { onPlay } = this.props;
+  
+        onPlay(this.state.polygons, this.state.polygons[0]);
+      }
     }
   
     onDeleteLabel = (selectedId) => {
@@ -981,7 +984,7 @@ export default class ImageAnnotation extends React.Component {
                               alignItems: "middle",
                               margin: "auto auto",
                             }}
-                            src={Car}
+                            src={this.props.src}
                             ref={el => this.imgEl = el}
                             onLoad={() => this.onImgLoad(this.imgEl)}
                             className="annotation-image"

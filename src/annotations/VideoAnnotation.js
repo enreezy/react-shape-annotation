@@ -1,7 +1,6 @@
 import React from "react";
 import { Layer, Rect, Stage, Group, Transformer } from "react-konva";
 import ReactPlayer from "react-player";
-import Car from "../assets/videos/car.mp4";
 import { Button } from "reactstrap";
 
 const Rectangle = ({
@@ -543,7 +542,7 @@ class App extends React.Component {
     return (
       <div style={{ marginTop: "-8%", width: "100%" }}>
         <ReactPlayer
-          url={Car}
+          url={this.props.src}
           ref={(player) => {
             this.player = player;
           }}

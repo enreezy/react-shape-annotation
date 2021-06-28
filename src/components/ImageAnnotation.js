@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ImageAnnotation from "annotations/ImageAnnotation";
 import { BrowserRouter as Router } from "react-router-dom";
+import Car from "../assets/images/cars.jpg";
 import {
   Row,
   Col,
@@ -100,7 +101,7 @@ class App extends React.Component {
                       <p className="card-category">Select shape to be use and use it to draw on to the image</p>
                     </div>
                     <div className="card-body" style={{marginTop: "15px"}}>
-                      <ImageAnnotation onPlay={this.showData}/>
+                      <ImageAnnotation onPlay={this.showData} src={Car}/>
                     </div>
                   </div>
                 </div>
