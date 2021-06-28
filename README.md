@@ -19,7 +19,7 @@ you can now open <http://localhost:8080/> to your browser
 
 # Video Annotation
 
-![](https://media.giphy.com/media/Nlo1NSpzUiIVHRRirc/giphy.gif)
+<img src="https://media.giphy.com/media/Nlo1NSpzUiIVHRRirc/giphy.gif" width="100%"/>
 
 ## How to use
 
@@ -30,7 +30,7 @@ you can now open <http://localhost:8080/> to your browser
 
 ## Rectangle
 
-<img src="https://media.giphy.com/media/ZnDgcLMXR74UNxHGYg/giphy.gif" width="100%" height="100%"/>
+<img src="https://media.giphy.com/media/ZnDgcLMXR74UNxHGYg/giphy.gif" width="100%"/>
 
 ## How to use
 
@@ -38,7 +38,7 @@ you can now open <http://localhost:8080/> to your browser
 
 ## Polygon
 
-<img src="https://media.giphy.com/media/w0459JPvugY0mjqTYP/giphy.gif" width="100%" height="100%"/>
+<img src="https://media.giphy.com/media/w0459JPvugY0mjqTYP/giphy.gif" width="100%"/>
 
 ## How to use
 
@@ -46,7 +46,7 @@ you can now open <http://localhost:8080/> to your browser
 
 ## Polyline
 
-<img src="https://media.giphy.com/media/MuaTV3VYNXJe3F7dd2/giphy.gif" width="100%" height="100%"/>
+<img src="https://media.giphy.com/media/MuaTV3VYNXJe3F7dd2/giphy.gif" width="100%"/>
 
 ## How to use
 
