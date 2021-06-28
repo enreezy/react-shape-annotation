@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-you can now open `http://localhost:8080/` to your browser
+you can now open <http://localhost:8080/> to your browser
 
 # Video Annotation
 
