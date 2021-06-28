@@ -1,6 +1,6 @@
 # bbox-annotator
 
-Online annotation tool that can annotate objects in videos and images to get the height and width of the object use it for computer vision datas
+Online annotation tool created with ReactJS that can annotate objects in videos and images to get the height and width of the object use it for computer vision datas
 
 ## Installation
 --------------------
