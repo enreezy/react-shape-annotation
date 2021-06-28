@@ -1,6 +1,6 @@
 # bbox-annotator
 
-Online tool that can annotate objects in videos and images to get the coordinates and use it for computer vision datas
+Online annotation tool that can annotate objects in videos and images to get the height and width of the object use it for computer vision datas
 
 ## How to run
 
