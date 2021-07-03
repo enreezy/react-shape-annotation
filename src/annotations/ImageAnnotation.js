@@ -36,8 +36,8 @@ export default class ImageAnnotation extends React.Component {
             isLoading: true,
             loadingImage: true,
             uploadLength: 0,
-            widthRatio: 735 / 730,
-            heightRatio: 550 / 486,
+            widthRatio: 0,
+            heightRatio: 0,
             isDrawingMode: true, 
             dimensions: {
                 height: 0,
@@ -155,7 +155,12 @@ export default class ImageAnnotation extends React.Component {
         this.setState({ imageName: { name: e.target.files[0].name } });
     };
 
-    setRatio = (image, origWidth, origHeight) => {
+    setRatio = ({target: image}) => {
+        const origWidth = image.offsetWidth;
+        const origHeight = image.offsetHeight;
+
+        console.log(origWidth + " " + origHeight, "origSize----------");
+
         let width = origWidth > 735 ? 735 : origWidth;
         let height = origHeight > 550 ? 550 : origHeight;
 
@@ -986,7 +991,7 @@ export default class ImageAnnotation extends React.Component {
                             }}
                             src={this.props.src}
                             ref={el => this.imgEl = el}
-                            onLoad={() => this.onImgLoad(this.imgEl)}
+                            onLoad={this.setRatio}
                             className="annotation-image"
                           />
                           <div className="annotation-stage-container">
