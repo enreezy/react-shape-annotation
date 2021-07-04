@@ -17,7 +17,8 @@ module.exports = {
       components: path.resolve(__dirname, "src/components/"),
       assets: path.resolve(__dirname, "src/assets/"),
       config: path.resolve(__dirname, "src/config/"),
-      annotations: path.resolve(__dirname, "src/annotations/")
+      annotations: path.resolve(__dirname, "src/annotations/"),
+      shapes: path.resolve(__dirname, "src/shapes/"),
     },
   },
   module: {

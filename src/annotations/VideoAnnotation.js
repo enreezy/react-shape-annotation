@@ -565,8 +565,8 @@ class App extends React.Component {
           style={{
             position: "absolute",
             top: "0%",
-            height: 420,
-            width: "100%",
+            height: 550,
+            width: 750,
           }}
         >
           <Stage

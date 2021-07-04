@@ -16,8 +16,8 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
-import Polygon from "annotations/Polygon";
-import Rectangle from "annotations/Rectangle";
+import Polygon from "shapes/Polygon";
+import Rectangle from "shapes/Rectangle";
 import AnnotationInput from "annotations/AnnotationInput";
 
 export default class ImageAnnotation extends React.Component {
@@ -158,8 +158,6 @@ export default class ImageAnnotation extends React.Component {
     setRatio = ({target: image}) => {
         const origWidth = image.offsetWidth;
         const origHeight = image.offsetHeight;
-
-        console.log(origWidth + " " + origHeight, "origSize----------");
 
         let width = origWidth > 735 ? 735 : origWidth;
         let height = origHeight > 550 ? 550 : origHeight;
