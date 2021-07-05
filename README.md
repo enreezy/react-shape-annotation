@@ -51,3 +51,5 @@ you can now open <http://localhost:8080/> to your browser
 ## How to use
 
 > Click on every area you want to be part of the polyline
+--------------------
+## currently in progress
