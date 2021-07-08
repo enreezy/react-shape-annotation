@@ -13,6 +13,7 @@ import {
   ListGroup,
   ListGroupItem,
 } from "reactstrap";
+import { Link } from 'react-router-dom';
 
 
 function ImageAnnotationApp(){
@@ -50,10 +51,16 @@ function ImageAnnotationApp(){
         <div className="sidebar-wrapper">
           <ul className="nav">
             <li className="nav-item active  ">
-              <a className="nav-link" href="javascript:void(0)">
+              <Link className="nav-link" to="/image">
                 <i className="material-icons">dashboard</i>
                 <p>Image Annotation</p>
-              </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/video">
+                <i className="material-icons">dashboard</i>
+                <p>Video Annotation</p>
+              </Link>
             </li>
           </ul>
         </div>
@@ -72,14 +79,12 @@ function ImageAnnotationApp(){
             </button>
             <div className="collapse navbar-collapse justify-content-end">
               <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="javascript:void(0)">
-                    <i className="material-icons">notifications</i>
-                    <p className="d-lg-none d-md-block">
-                      Notifications
-                    </p>
-                  </a>
-                </li>
+                  <li className="nav-item active  ">
+                  <Link className="nav-link" to="/image">
+                    <i className="material-icons">dashboard</i>
+                    <p>Image Annotation</p>
+                  </Link>
+                  </li>
               </ul>
             </div>
           </div>

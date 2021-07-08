@@ -5,7 +5,7 @@ import ImageAnnotation from "components/ImageAnnotation";
 
 export default () => (
     <Switch>
-        <Route path="/" exact component={VideoAnnotation} />
+        <Route path="/" exact component={ImageAnnotation} />
         <Route path="/video" exact component={VideoAnnotation} />
         <Route path="/image" exact component={ImageAnnotation} />
     </Switch>
