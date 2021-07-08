@@ -1,14 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import ImageAnnotationApp from "components/ImageAnnotation.js";
-import VideoAnnotationnApp from "components/VideoAnnotation.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Routes from "./routes";
 
 ReactDOM.render(
   <BrowserRouter>
-    <VideoAnnotationnApp />
-    {/* <ImageAnnotationApp /> */}
+    <Routes />
   </BrowserRouter>,
   document.getElementById("root")
 );

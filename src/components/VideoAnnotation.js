@@ -90,7 +90,7 @@ function VideoAnnotationApp() {
                 <div className="card">
                   <div className="card-header card-header-primary">
                     <h4 className="card-title">Annotate Video</h4>
-                    <p className="card-category">Pause the video, Click the ADD NEW BOX button and draw box to moving object move the box every time you want to annotate the object</p>
+                    <p className="card-category">Pause the video, Click the ADD NEW BOX button and draw box to moving object move the box every time you want to annotate the object then replay</p>
                     <p className="card-category">ADD NEW BOX is equivalent to 1 box</p>
                   </div>
                   <div className="card-body" style={{marginTop: "15px"}}>
