@@ -1,6 +1,9 @@
-# bbox-annotator
+# bboxcv
 
 Online annotation tool created with ReactJS that can annotate objects in videos and images to get the height and width of the object use it for computer vision datas
+## Demo
+--------------------
+you may visit <https://bboxcv.herokuapp.com/>
 
 ## Installation
 --------------------
