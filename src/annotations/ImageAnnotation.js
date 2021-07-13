@@ -15,6 +15,7 @@ import {
 import Polygon from "shapes/Polygon";
 import Rectangle from "shapes/Rectangle";
 import AnnotationInput from "annotations/AnnotationInput";
+import { getRandomColour, isContainsObject } from "../methods/ImageAnnotationMethods";
 
 export default class ImageAnnotation extends React.Component {
     constructor(props) {
@@ -44,25 +45,16 @@ export default class ImageAnnotation extends React.Component {
             polygons: [],
             currentIndex: 0,
             isClosed: false,
-            resizedWidth: 735,
-            resizedHeight: 550,
+            resizedWidth: 400,
+            resizedHeight: 400,
         };
     }
 
-    
-    getRandomColour = () => {
-        let red = Math.floor(Math.random() * 255);
-        let green = Math.floor(Math.random() * 255);
-        let blue = Math.floor(Math.random() * 255);
-
-        return "rgb(" + red + "," + green + "," + blue + " )";
-    };
-
     addNewPolygon = () => {
         this.setState({
-        isFinished: false,
-        currentIndex: this.state.polygons.length,
-        isDrawingMode: true,
+          isFinished: false,
+          currentIndex: this.state.polygons.length,
+          isDrawingMode: true,
         });
     };  
 
@@ -74,7 +66,7 @@ export default class ImageAnnotation extends React.Component {
         if (this.state.selectedShape === "polygon") {
             if (data === undefined || data.length === 0) {
                 } else {
-                    if (this.isContainsObject(data, this.state.polygons)) {
+                    if (isContainsObject(data, this.state.polygons)) {
                     } else {
                         this.setState({ polygons: data });
                     }
@@ -82,7 +74,7 @@ export default class ImageAnnotation extends React.Component {
         } else {
             if (data === undefined || data.length === 0) {
             } else {
-                if (this.isContainsObject(data, this.state.annotations)) {
+                if (isContainsObject(data, this.state.annotations)) {
                 } else {
                     this.setState({ annotations: data });
                 }
@@ -93,16 +85,6 @@ export default class ImageAnnotation extends React.Component {
             inputComment: data,
         });
 
-    };
-
-    isContainsObject = (obj, list) => {
-        for (let i = 0; i < list.length; i++) {
-            if (list[i] === obj) {
-            return true;
-        }
-    }
-
-    return false;
     };
 
     setRatio = ({target: image}) => {
@@ -157,43 +139,13 @@ export default class ImageAnnotation extends React.Component {
       const deleteTarget = annotations.findIndex(
         (annotation) => annotation.id === selectedId
       );
-  
-      let annotated = this.state.annotated;
-  
-      let targetDelete = annotated.indexOf(this.state.imageName.name);
-      if (targetDelete >= 0) {
-        annotated.splice(targetDelete, 1);
-        this.setState({ annotated: annotated });
-      }
-  
+
       if (deleteTarget >= 0) {
         annotations.splice(deleteTarget, 1);
         this.onChange(annotations);
       }
   
       this.setState({ showInput: false });
-    };
-
-    handleImageClick = (image) => {
-        this.setState({
-          imageName: { name: image.imgUrl, id: image.id },
-          imageScale: { width: 735, height: 735 },
-          showInput: false,
-          filterAnnotationLabels: [],
-          allLabels: "",
-          imageId: image.id,
-          selectedId: null,
-        });
-    
-        this.onNext();
-        this.clearAnnotations(image.id);
-        this.getAnnotatedImages();
-    };
-
-    setAnnotations = (annotations) => {
-        this.setState({
-          annotations: annotations,
-        });
     };
 
     setCommentPolygon = (annotations) => {
@@ -207,7 +159,6 @@ export default class ImageAnnotation extends React.Component {
           inputComment: value,
           polygons: annotations,
         });
-        this.onNext();
     };
     
     setCommentRectangle = (value, annotations) => {
@@ -216,14 +167,6 @@ export default class ImageAnnotation extends React.Component {
         });
     
         this.onChange(annotations);
-        this.onNext();
-    };
-
-    _onChange = (event) => {
-        this.filterLabelOptions(this.state.imageName.id, event.value);
-        this.setState({
-          allLabels: event.value,
-        });
     };
     
     getMousePosition = (stage) => {
@@ -314,12 +257,6 @@ export default class ImageAnnotation extends React.Component {
         }
     };
     
-    handleDeselectPolygon = (event) => {
-        if (event.target === event.target.getStage()) {
-          this.setState({ selectedId: false, showInput: false });
-        }
-    };
-    
     handleMouseDown = (e, id) => {
         let polyIndex = this.state.polygons.findIndex((poly) => poly.id === id);
         let y = [];
@@ -348,28 +285,6 @@ export default class ImageAnnotation extends React.Component {
           this.setState({ selectedId: id });
         }
     };
-
-    handleCircleDrag(e, circleX, circleY) {
-        const newPoints = [...this.state.points];
-    
-        // Changing the points state with new points while dragging the circle
-        for (
-          let i = 0;
-          i < this.state.polygons[this.state.currentIndex].points.length;
-          i++
-        ) {
-          if (
-            this.state.polygons[this.state.currentIndex].points[i] === circleX &&
-            this.state.polygons[this.state.currentIndex].points[i + 1] === circleY
-          ) {
-            newPoints[i] = e.target.x();
-            newPoints[i + 1] = e.target.y();
-            break;
-          }
-        }
-    
-        this.setState({ points: newPoints });
-    }
     
     handleMouseMovePolygon = (event) => {
         const { getMousePosition } = this;
@@ -517,12 +432,6 @@ export default class ImageAnnotation extends React.Component {
         }
     };
     
-    addNewRectangle = () => {
-        this.setState({
-          isDrawingMode: true,
-        });
-    };
-    
     handleMouseUp = (e) => {
         if (this.state.isDrawing) {
           let annotations = this.state.annotations;
@@ -567,7 +476,7 @@ export default class ImageAnnotation extends React.Component {
           imageId: this.state.imageName.id,
           width: 0,
           height: 0,
-          stroke: this.getRandomColour(),
+          stroke: getRandomColour(),
           label: "New Object",
           shape: "rectangle",
         });
@@ -841,12 +750,12 @@ export default class ImageAnnotation extends React.Component {
                               width="25"
                               className="svg-inline--fa fa-draw-square fa-w-14 fa-9x">
                               <path 
-                              fill={
-                                this.state.selectedShape === "rectangle"
-                                  ? "red"
-                                  : "currentColor"
-                              }
-                              d="M416 360.88V151.12c19.05-11.09 32-31.49 32-55.12 0-35.35-28.65-64-64-64-23.63 0-44.04 12.95-55.12 32H119.12C108.04 44.95 87.63 32 64 32 28.65 32 0 60.65 0 96c0 23.63 12.95 44.04 32 55.12v209.75C12.95 371.96 0 392.37 0 416c0 35.35 28.65 64 64 64 23.63 0 44.04-12.95 55.12-32h209.75c11.09 19.05 31.49 32 55.12 32 35.35 0 64-28.65 64-64 .01-23.63-12.94-44.04-31.99-55.12zm-320 0V151.12A63.825 63.825 0 0 0 119.12 128h209.75a63.825 63.825 0 0 0 23.12 23.12v209.75a63.825 63.825 0 0 0-23.12 23.12H119.12A63.798 63.798 0 0 0 96 360.88zM400 96c0 8.82-7.18 16-16 16s-16-7.18-16-16 7.18-16 16-16 16 7.18 16 16zM64 80c8.82 0 16 7.18 16 16s-7.18 16-16 16-16-7.18-16-16 7.18-16 16-16zM48 416c0-8.82 7.18-16 16-16s16 7.18 16 16-7.18 16-16 16-16-7.18-16-16zm336 16c-8.82 0-16-7.18-16-16s7.18-16 16-16 16 7.18 16 16-7.18 16-16 16z" className="">
+                                fill={
+                                  this.state.selectedShape === "rectangle"
+                                    ? "red"
+                                    : "currentColor"
+                                }
+                                d="M416 360.88V151.12c19.05-11.09 32-31.49 32-55.12 0-35.35-28.65-64-64-64-23.63 0-44.04 12.95-55.12 32H119.12C108.04 44.95 87.63 32 64 32 28.65 32 0 60.65 0 96c0 23.63 12.95 44.04 32 55.12v209.75C12.95 371.96 0 392.37 0 416c0 35.35 28.65 64 64 64 23.63 0 44.04-12.95 55.12-32h209.75c11.09 19.05 31.49 32 55.12 32 35.35 0 64-28.65 64-64 .01-23.63-12.94-44.04-31.99-55.12zm-320 0V151.12A63.825 63.825 0 0 0 119.12 128h209.75a63.825 63.825 0 0 0 23.12 23.12v209.75a63.825 63.825 0 0 0-23.12 23.12H119.12A63.798 63.798 0 0 0 96 360.88zM400 96c0 8.82-7.18 16-16 16s-16-7.18-16-16 7.18-16 16-16 16 7.18 16 16zM64 80c8.82 0 16 7.18 16 16s-7.18 16-16 16-16-7.18-16-16 7.18-16 16-16zM48 416c0-8.82 7.18-16 16-16s16 7.18 16 16-7.18 16-16 16-16-7.18-16-16zm336 16c-8.82 0-16-7.18-16-16s7.18-16 16-16 16 7.18 16 16-7.18 16-16 16z" className="">
                               </path>
                             </svg>
                         </Button>
@@ -915,11 +824,10 @@ export default class ImageAnnotation extends React.Component {
                               </path>
                             </svg>
                         </Button>
-                        <div className="annotation-image-container">
                           <img
                             style={{
-                              maxHeight: this.state.resizedHeight + "px",
-                              maxWidth: this.state.resizedWidth + "px",
+                              height: this.state.resizedHeight + "px",
+                              width: this.state.resizedWidth + "px",
                               display: "flex",
                               alignItems: "middle",
                               margin: "auto auto",
@@ -929,7 +837,6 @@ export default class ImageAnnotation extends React.Component {
                             onLoad={this.setRatio}
                             className="annotation-image"
                           />
-                          <div>
                             <div
                               style={{
                                 width: this.state.resizedWidth,
@@ -996,8 +903,6 @@ export default class ImageAnnotation extends React.Component {
                                 )}
                               </div>
                             </div>
-                          </div>
-                        </div>
                     </CardBody>
                 </Card>
                 </div>
