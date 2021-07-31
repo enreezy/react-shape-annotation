@@ -1,12 +1,12 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 import VideoAnnotation from "components/VideoAnnotation";
 import ImageAnnotation from "components/ImageAnnotation";
 
 export default () => (
-    <Switch>
-        <Route path="/" exact component={ImageAnnotation} />
-        <Route path="/video" exact component={VideoAnnotation} />
-        <Route path="/image" exact component={ImageAnnotation} />
-    </Switch>
-)
+  <Switch>
+    <Route path="/" exact component={ImageAnnotation} />
+    <Route path="/video" exact component={VideoAnnotation} />
+    <Route path="/image" exact component={ImageAnnotation} />
+  </Switch>
+);

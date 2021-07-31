@@ -19,6 +19,9 @@ module.exports = {
       config: path.resolve(__dirname, "src/config/"),
       annotations: path.resolve(__dirname, "src/annotations/"),
       shapes: path.resolve(__dirname, "src/shapes/"),
+      methods: path.resolve(__dirname, "src/methods/"),
+      options: path.resolve(__dirname, "src/options/"),
+      canvas: path.resolve(__dirname, "src/canvas/"),
     },
   },
   module: {
@@ -43,15 +46,15 @@ module.exports = {
       {
         test: /\.mp4$/,
         use: [
-            {
-                loader: "file-loader",
-                options: {
-                    name: "[name].[ext]",
-                    outputPath: "video"
-                }
-            }
-        ]
-      }
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "video",
+            },
+          },
+        ],
+      },
     ],
   },
   devtool: "cheap-module-eval-source-map",
